@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+      const f = params.get("f");
+      if (f) {
+        try {
+          const decoded = atob(f);  // Base64 decode
+          window.location.href = decoded; // redirect to real link
+        } catch (e) {
+          document.body.innerHTML = "<h3>⚠️ Invalid encoded link</h3>";
+        }
+      } else {
+        document.body.innerHTML = "<h3>⚠️ No link provided</h3>";
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>⏳ Redirecting...</p>
+</body>
+</html>
